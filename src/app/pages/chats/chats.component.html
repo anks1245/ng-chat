@@ -1,0 +1,10 @@
+<div class="w-screen min-h-screen bg-primary flex justify-content-center align-items-center">
+    <div class="flex gap-2 align-items-center" style="height: 95vh; width: 95vw;">
+        <div class="sidebar" [class.open]="isMobileSidebarOpen">
+            <app-sidebar/>
+        </div>
+        <div class="chatbox flex-grow-1">
+            <app-chatbox />
+        </div>
+    </div>
+</div>

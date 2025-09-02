@@ -1,0 +1,22 @@
+body{
+    font-size: 12px;
+}
+
+.pi{
+    font-size: 12px;
+}
+
+.p-inputtext{
+    font-size: 12px;
+    padding: 0.50rem 0.50rem;
+}
+
+.p-inputgroup-addon{
+    font-size: 12px;
+    padding: 0.50rem 0.50rem;
+}
+
+.p-button{
+    font-size: 12px;
+    padding: 0.50rem 0.50rem;
+}

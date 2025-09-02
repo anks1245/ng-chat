@@ -1,0 +1,106 @@
+@import '../../../../variables.scss';
+
+ul.settings{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+        padding: 0.4rem 0.5rem;
+    }
+}
+
+.bg-red-100{
+    background-color: var(--red-100);
+}
+
+.chat-left {
+  position: relative;
+  background: #3b82f6; /* your blue */
+  color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+
+/* Pointer */
+.chat-left::before {
+  content: "";
+  position: absolute;
+  top: 5px; /* distance from top */
+  left: -5px; /* place outside bubble */
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent; 
+  border-right: 5px solid #3b82f6;  /* same as bubble bg */
+  border-bottom: 5px solid transparent;
+}
+
+.chat-right {
+  position: relative;
+  background: #3b82f6; /* your blue */
+  color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+
+
+.chat-right::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: -5px;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-left: 5px solid #3b82f6;
+  border-bottom: 5px solid transparent;
+}
+
+
+.btn-grad {
+  border: none;
+  font-size: 14px;
+  background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5  51%, #00d2ff  100%)
+}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+}
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.chat{
+    display: block;
+    // Extra small (mobile phones)
+    @media (max-width: $breakpoint-tablet) {
+      display: none;
+    }
+}
+         
+.chat-mobile{
+    display: none;
+  
+    // Extra small (mobile phones)
+    @media (max-width: $breakpoint-tablet) {
+        display: block;
+    }
+}
+
+.toggle-sidebar{
+    display: none;
+  
+    // Extra small (mobile phones)
+    @media (max-width: $breakpoint-tablet) {
+        display: block;
+    }
+}

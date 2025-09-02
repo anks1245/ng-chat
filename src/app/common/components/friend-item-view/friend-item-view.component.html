@@ -1,0 +1,15 @@
+<p-card>
+    <ng-template pTemplate="p-card-content">
+        <div class="flex align-items-center gap-2">
+            <p-avatar 
+                [label]="dp(name ?? 'Un Known')"
+                size="normal" 
+                [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" />
+            <div class="flex-grow-1">
+                <h5 class="m-0">{{name}}</h5>
+                <span class="text-xs">{{email}}</span>
+            </div>
+            <p-button icon="pi pi-comment" styleClass="cursor-pointer h-2rem w-2rem" [rounded]="true" [text]="true" severity="info" (onClick)="startChat(id)" />
+        </div>
+    </ng-template>
+</p-card>

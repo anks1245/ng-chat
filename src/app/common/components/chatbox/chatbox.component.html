@@ -1,0 +1,116 @@
+<div class="w-full bg-white text-muted border-round" style="height: 90vh;">
+    <div [ngSwitch]="tab">
+        <!-- <ng-container *ngSwitchCase="'Chats'">
+            <ng-container *ngIf="receiver != null else nothing">
+                <div class="w-full flex flex-column" style="height: 90vh;">
+                    Chat Tab
+                </div>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Friends'">
+            
+        </ng-container>
+        <ng-container *ngSwitchCase="'Groups'">
+            <ng-container *ngIf="group != null else nothing">
+                <div class="w-full flex flex-column" style="height: 90vh;">
+                    Group Tab
+                </div>
+            </ng-container>
+        </ng-container> -->
+        <ng-container *ngSwitchCase="'Calls'">
+            <ng-container *ngIf="calls != null else nothing">
+                <div class="w-full flex flex-column" style="height: 90vh;">
+                    Calls Tab
+                </div>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+            <ng-container *ngIf="receiver != null else nothing">
+                <div class="w-full flex flex-column" style="height: 90vh;">
+                    <div class="chat-header p-2 w-full h-4rem flex align-items-center gap-2">
+                        <div class="flex gap-3 align-items-center">
+                            <i (click)="onClickToggleMobileSidebar()" class="toggle-sidebar pi pi-arrow-left m-1 cursor-pointer "></i>
+                            <p-avatar 
+                                [label]="dp(ngUser?.name ?? 'Un Known')"
+                                size="normal" 
+                                [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" />
+                        </div>
+                        <div class="flex-grow-1">
+                            <h3 class="m-0 text-color">{{ngUser?.name}}</h3>
+                        </div>
+                        <div class="">
+                            <p-button styleClass="m-2 cursor-pointer h-2rem w-2rem" icon="pi pi-ellipsis-v" [rounded]="true" [text]="true" size="small" (onClick)="op.toggle($event)">
+                            <p-overlayPanel #op>
+                                <ul class="flex flex-column w-8rem settings">
+                                    <li class="cursor-pointer hover:bg-blue-50 hover:text-primary border-round">Favorite</li>
+                                    <li class="cursor-pointer hover:bg-red-50 text-danger border-round">Report</li>
+                                </ul>
+                            </p-overlayPanel>
+                        </p-button>
+                        </div>
+                    </div>
+                    <div class="chat-body p-2 w-full flex-grow-1 surface-100 overflow-y-scroll">
+                        <div *ngFor="let msg of chatMessages">
+                            <ng-container *ngIf="msg.from == currentUser?.userId else other">
+                                <div class="right flex gap-2 m-1 flex-row-reverse">
+                                    <p-avatar 
+                                        [pTooltip]="currentUser?.name ?? 'Un Known'"
+                                        tooltipPosition="top"
+                                        [label]="dp(currentUser?.name ?? 'Un Known')"
+                                        size="normal" 
+                                        [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" />
+                                    <div class="flex flex-column align-items-end">
+                                        <div class="chat-right message bg-primary p-2 border-round max-w-25rem">
+                                            <span class="w-full h-full text-overflow-wrap">{{msg.message}}</span>
+                                        </div>
+                                        <small>{{msg.on}}</small>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <ng-template #other>
+                                <div class="left flex gap-2 m-1">
+                                    <p-avatar 
+                                        [pTooltip]="ngUser?.name ?? 'Un Known'"
+                                        [label]="dp(ngUser?.name ?? 'Un Known')"
+                                        size="normal" 
+                                        [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" />
+                                    <div class="">
+                                        <div class="chat-left message bg-primary p-2 border-round max-w-25rem ml-10">
+                                            <span class="w-full h-full text-overflow-wrap">{{msg.message}}</span>
+                                        </div>
+                                        <small>{{msg.on}}</small>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div> 
+                    </div>
+                    <div class="chat-footer p-2 w-full flex gap-2">
+                        <div class="w-full">
+                            <form [formGroup]="messageForm!" (submit)="sendMessage()" class="w-full flex gap-2">
+                                <textarea 
+                                    rows="2"
+                                    class="w-full"
+                                    formControlName="message" 
+                                    pInputTextarea >
+                                </textarea>
+                                <p-button type="submit" [loading]="isLoading" label="SEND" icon="pi pi-send" styleClass="h-full px-5" />
+                            </form>
+                            <small class="text-danger" 
+                                *ngIf="messageForm?.get('message')?.touched && messageForm?.get('message')?.hasError('required')">
+                                Message is required
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <ng-template #nothing>
+        <div class="w-full flex flex-column justify-content-center align-items-center gap-5" style="height: 90vh;">
+            <h1 style="font-size: 2.4rem;">Hi <span class="text-primary">{{currentUser?.name}}</span></h1>
+            <img src="../../../../assets/ChatNow.jpg" alt="chat-img" height="50%"/>
+            <button class="chat btn-grad">Start Chatting 👋</button>
+            <button class="chat-mobile btn-grad" (click)="onClickToggleMobileSidebar()">Start Chatting 👋</button>
+        </div>
+    </ng-template>
+</div>

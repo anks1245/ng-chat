@@ -1,0 +1,21 @@
+<!-- <p-dataView *ngIf="recentChats.length > 0" [value]="recentChats">
+    <ng-template pTemplate="list" let-chat>
+        <p-card [header]="chat?.other_party?.name || 'loading'">
+            <p>{{ chat.message }}</p>
+            <small>{{ chat.on }}</small>
+        </p-card>
+    </ng-template>
+</p-dataView> -->
+<div *ngFor="let chat of recentChats;let i=index">
+    <div appRipple (click)="startChat(chat?.other_party?.userId ?? null)" class="px-2 py-3 flex align-items-center gap-2 select-none cursor-pointer border-round">
+        <p-avatar 
+            [label]="dp(chat?.other_party?.name ?? 'Un Known')"
+            size="normal" 
+            [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" />
+        <div class="flex-grow-1">
+            <h5 class="m-0">{{chat?.other_party?.name ?? 'Anonymous'}}</h5>
+            <span class="text-xs">{{chat.message}}</span>
+        </div>
+    </div>
+    <div class="mx-1 surface-200" style="height: 1px;"></div>
+</div>

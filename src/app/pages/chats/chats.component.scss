@@ -1,0 +1,45 @@
+@import '../../../variables.scss';
+
+.grid{
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sidebar{
+    width: 22rem;
+    height: 90vh;
+    // Tablet
+    @media (max-width: $breakpoint-laptop) {
+        width: 18rem;
+    }
+
+    // Mobile: collapsed by default
+    // @media (max-width: $breakpoint-tablet) {
+    //     width: 70px;
+    //     .sidebar-text {
+    //         display: none; // hide labels, show only icons
+    //     }
+    // }
+
+    // Extra small (mobile phones)
+    @media (max-width: $breakpoint-tablet) {
+        position: absolute;
+        width: 100vw;
+        left: -100vw;
+        height: 100vh;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        &.open {
+            left: 0;
+            box-shadow: 
+                rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+                rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+                rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+                rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+    }
+}

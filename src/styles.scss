@@ -1,1 +1,163 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  /* Reduce font size globally */
+  --p-font-size: 0.875rem; /* ~14px */
+
+  /* Compact input fields */
+  --p-input-padding-y: 0.25rem;
+  --p-input-padding-x: 0.5rem;
+
+  /* Compact buttons */
+  --p-button-padding-y: 0.25rem;
+  --p-button-padding-x: 0.75rem;
+
+  /* Compact dropdowns/selects */
+  --p-dropdown-item-padding: 0.25rem 0.5rem;
+
+  /* Smaller border radius if needed */
+  --p-border-radius: 4px;
+}
+
+/* Text Color Utilities (PrimeNG theme variables) */
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-primary-hover:hover {
+  color: var(--primary-color-hover) !important;
+}
+
+.text-secondary {
+  color: var(--surface-500, #6c757d) !important;
+}
+
+.text-success {
+  color: var(--green-500, #28a745) !important;
+}
+
+.text-info {
+  color: var(--blue-500, #17a2b8) !important;
+}
+
+.text-warning {
+  color: var(--yellow-500, #ffc107) !important;
+}
+
+.text-danger {
+  color: var(--red-500, #dc3545) !important;
+}
+
+.text-muted {
+  color: var(--text-color-secondary, #6c757d) !important;
+}
+
+/* Background Color Utilities */
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-success {
+  background-color: var(--green-500, #28a745) !important;
+  color: #fff !important;
+}
+
+.bg-info {
+  background-color: var(--blue-500, #17a2b8) !important;
+  color: #fff !important;
+}
+
+.bg-warning {
+  background-color: var(--yellow-500, #ffc107) !important;
+  color: #212529 !important;
+}
+
+.bg-danger {
+  background-color: var(--red-500, #dc3545) !important;
+  color: #fff !important;
+}
+
+.p-toast-message {
+  font-size: 0.875rem;
+}
+
+.p-component {
+  font-size: 0.875rem;
+}
+
+.p-tabmenu .p-tabmenu-nav {
+    justify-content: space-evenly;
+}
+
+.p-tabmenuitem {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.p-menuitem-link {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.p-menuitem-icon{
+  margin: 0;
+}
+
+.p-tooltip{
+  font-size: 11px;
+  padding: 5px;
+}
+
+.p-overlaypanel .p-overlaypanel-content {
+    padding: 0.15rem;
+    font-size: 0.875rem;
+}
+
+.p-dialog {
+  font-size: 0.875rem;
+  .p-dialog-header {
+    padding: 1rem;
+  }
+  .p-dialog-content{
+    padding: 0 1rem 1.5rem 1rem;
+  }
+  .p-dialog-footer{
+    padding: 0 1rem 1rem 1rem;
+    button{
+      margin: 0;
+    }
+  }
+}
+
+.p-card {
+  border: 1px solid rgb(226, 226, 226);
+  box-shadow: none;
+}
+
+.p-card .p-card-body {
+    padding: 0.8rem;
+}
+
+.p-card .p-card-content {
+    padding: 0.5rem 0;
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+    margin: 0;
+}
+

@@ -1,0 +1,29 @@
+<div class="p-1 flex flex-column gap-1">
+    <ng-container *ngIf="!isLoading else loading">
+        <ng-container *ngIf="users.length != 0 else noUsersFound">
+            <div *ngFor="let user of users">
+                <app-friend-item-view [id]="user.userId" [name]="user.name" [email]="user.email" [profile_pic]="user.profile_pic" />
+            </div>
+        </ng-container>
+        <ng-template #noUsersFound>
+
+        </ng-template>
+    </ng-container>
+    <ng-template #loading>
+        <div *ngFor="let us of userSekeletons">
+            <p-card>
+                <ng-template pTemplate="p-card-content">
+                    <div class="flex align-items-center gap-2">
+                        <p-skeleton width="2rem" height="2rem" borderRadius="6px"/>
+                        <div class="flex-grow-1">
+                            <p-skeleton styleClass="m-1" width="50%" height="14px" borderRadius="2px"/>
+                            <p-skeleton styleClass="m-1" width="90%" height="14px" borderRadius="2px"/>
+                        </div>
+                        <p-skeleton styleClass="m-1" width="2rem" height="2rem" borderRadius="50%"/>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </ng-template>
+</div>
+

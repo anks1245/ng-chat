@@ -1,0 +1,54 @@
+<div class="w-full bg-white text-muted border-round flex flex-column" style="height: 100%; width: 100%;">
+    <div class="flex justify-content-between align-items-center text-primary">
+        <h1 class="m-2">Ng Chats</h1>
+        <p-avatar 
+            [label]="dp(user?.name ?? 'Un Known')" 
+            styleClass="mr-2 cursor-pointer" 
+            [style]="{ 'background-color': '#dee9fc', color: '#1a2551' }" 
+            shape="circle" 
+            (click)="op.toggle($event)">
+            <p-overlayPanel #op>
+                <ul class="flex flex-column w-8rem settings">
+                    <li class="cursor-pointer hover:bg-blue-50 hover:text-primary border-round">Profile</li>
+                    <li class="cursor-pointer hover:bg-red-50 text-danger border-round" (click)="confirmLogout($event)">Logout</li>
+                </ul>
+            </p-overlayPanel>
+        </p-avatar>
+
+        <!-- <p-button styleClass="m-2 cursor-pointer h-2rem w-2rem" icon="pi pi-ellipsis-v" [rounded]="true" [text]="true" size="small" (onClick)="op.toggle($event)">
+            <p-overlayPanel #op>
+                <ul class="flex flex-column w-8rem settings">
+                    <li class="cursor-pointer hover:bg-blue-50 hover:text-primary border-round">Profile</li>
+                    <li class="cursor-pointer hover:bg-red-50 text-danger border-round" (click)="confirmLogout($event)">Logout</li>
+                </ul>
+            </p-overlayPanel>
+        </p-button> -->
+    </div>
+    <p-tabMenu [model]="items" [(activeItem)]="activeMenu" (activeItemChange)="onTabChange()">
+        <ng-template pTemplate="item" let-item>
+            <a role="menuitem" pripple [pTooltip]="item.label" tooltipPosition="top" class="p-ripple p-element p-menuitem-link" target="undefined" tabindex="0">
+                <span [class]="'p-menuitem-icon pi pi-comments '+item.icon"></span>
+                <!-- <span class="p-menuitem-text ng-star-inserted"></span> -->
+            </a>
+        </ng-template>
+    </p-tabMenu>
+    <div class="w-full flex-grow-1 overflow-y-scroll" >
+        <div [ngSwitch]="activeMenu?.label">
+            <ng-container *ngSwitchCase="'Chats'">
+                <app-my-chats/>
+            </ng-container>
+            <ng-container *ngSwitchCase="'Friends'">
+                <app-friends/>
+            </ng-container>
+            <ng-container *ngSwitchCase="'Groups'">
+                <app-groups/>
+            </ng-container>
+            <ng-container *ngSwitchCase="'Calls'">
+                <app-calls/>
+            </ng-container>
+            <ng-container *ngSwitchDefault>Nothing</ng-container>
+        </div>
+    </div>
+</div>
+
+<p-confirmDialog />

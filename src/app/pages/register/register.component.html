@@ -1,0 +1,101 @@
+<div class="w-screen min-h-screen bg-primary flex justify-content-center align-items-center">
+    <div class="p-card sm:w-8 md:w-4 lg:w-4 xl:w-3 min-h-1rem flex px-4 py-2 justify-content-center align-items-center flex-column">
+        <div class="flex flex-row justify-content-center align-items-center gap-5 m-3">
+            <img class="m-2" width="48" height="48" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-firebase-a-googles-mobile-platform-that-helps-you-quickly-develop-high-quality-apps-logo-color-tal-revivo.png" alt="external-firebase-a-googles-mobile-platform-that-helps-you-quickly-develop-high-quality-apps-logo-color-tal-revivo"/>
+            <h1>+</h1>
+            <img class="m-2" width="48" height="48" src="https://img.icons8.com/cute-clipart/64/chat.png" alt="chat"/>
+        </div>
+        <div class="flex gap-2 flex-column justify-content-center align-items-center">
+            <span>Ng Chat Room</span>
+            <h2>CREATE ACCOUNT</h2>
+        </div>
+        <form [formGroup]="registerForm!" (submit)="registerUser()">
+            <div class="my-2">
+                <label>Username</label>
+                <p-inputGroup>
+                    <p-inputGroupAddon>
+                        <i class="pi pi-user"></i>
+                    </p-inputGroupAddon>
+                    <input pInputText formControlName="username" placeholder="username" />
+                </p-inputGroup>
+                <small class="text-danger" 
+                        *ngIf="registerForm?.get('username')?.touched && registerForm?.get('username')?.hasError('required')">
+                    Username is required
+                </small>
+            </div>
+            <div class="my-2">
+                <label>Email</label>
+                <p-inputGroup>
+                    <p-inputGroupAddon>
+                        <i class="pi pi-envelope"></i>
+                    </p-inputGroupAddon>
+                    <input pInputText formControlName="email" placeholder="Email" />
+                </p-inputGroup>
+                <small class="text-danger" 
+                        *ngIf="registerForm?.get('email')?.touched && registerForm?.get('email')?.hasError('required')">
+                    Email is required
+                </small>
+
+                <small class="text-danger" 
+                        *ngIf="registerForm?.get('email')?.touched && registerForm?.get('email')?.hasError('email')">
+                    Please enter a valid email address
+                </small>
+            </div>
+            <div class="my-2">
+                <label>Password</label>
+                <p-inputGroup>
+                    <p-inputGroupAddon>
+                        <i class="pi pi-lock"></i>
+                    </p-inputGroupAddon>
+                    <p-password placeholder="Password" formControlName="password" styleClass="w-full" inputStyleClass="w-full" [toggleMask]="true" />
+                </p-inputGroup>
+                 <small class="text-red-500" 
+                        *ngIf="registerForm?.get('password')?.touched && registerForm?.get('password')?.hasError('required')">
+                    Password is required
+                </small>
+
+                <small class="text-red-500" 
+                        *ngIf="registerForm?.get('password')?.touched && registerForm?.get('password')?.hasError('minlength')">
+                    Password must be at least 8 characters
+                </small>
+            </div>
+            <div class="my-2">
+                <label>Confirm Password</label>
+                <p-inputGroup>
+                    <p-inputGroupAddon>
+                        <i class="pi pi-lock"></i>
+                    </p-inputGroupAddon>
+                    <p-password placeholder="Confirm Password" formControlName="confirm_password" styleClass="w-full" inputStyleClass="w-full" [toggleMask]="true" />
+                </p-inputGroup>
+                 <small class="text-danger" 
+                        *ngIf="registerForm?.get('confirm_password')?.touched && registerForm?.get('confirm_password')?.hasError('required')">
+                    Confirm password is required
+                </small>
+
+                <small class="text-danger" 
+                        *ngIf="registerForm?.get('confirm_password')?.touched && registerForm?.get('confirm_password')?.hasError('minlength')">
+                    Confirm password must be at least 8 characters
+                </small>
+
+                <small class="text-danger" 
+                        *ngIf="registerForm?.get('password')?.getRawValue() !== registerForm?.get('confirm_password')?.getRawValue() &&  registerForm?.get('confirm_password')?.getRawValue()?.length != 0">
+                    Password didn't matched
+                </small>
+            </div>
+            <div class="my-4">
+                <p-button   
+                    type="submit"
+                    styleClass="w-full"
+                    label="Register" 
+                    icon="pi pi-check" 
+                    iconPos="right"
+                    [icon]="isLoading?'pi pi-spin pi-spinner':'pi pi-lock'"
+                    [disabled]="isLoading" />
+            </div>
+        </form>
+        <span class="mb-3">OR</span>
+        <p>ALREADY HAVE AN ACCOUNT? <a class="button text-primary" routerLink="/login">{{'Login Here'|uppercase}}</a></p>
+    </div>
+</div>
+
+<p-toast />
