@@ -49,7 +49,7 @@
                         </p-button>
                         </div>
                     </div>
-                    <div class="chat-body p-2 w-full flex-grow-1 surface-100 overflow-y-scroll">
+                    <div #chatBody class="chat-body p-2 w-full flex-grow-1 surface-100 overflow-y-scroll">
                         <div *ngFor="let msg of chatMessages">
                             <ng-container *ngIf="msg.from == currentUser?.userId else other">
                                 <div class="right flex gap-2 m-1 flex-row-reverse">

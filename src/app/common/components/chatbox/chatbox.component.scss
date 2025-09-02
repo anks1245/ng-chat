@@ -13,6 +13,11 @@ ul.settings{
     background-color: var(--red-100);
 }
 
+.chat-body{
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
 .chat-left {
   position: relative;
   background: #3b82f6; /* your blue */

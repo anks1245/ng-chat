@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { PRIMENG_MODULES } from '../../primeng-shared';
 import { COMMON } from '../../common';
 import { TabService } from '../../../services/tab.service';
@@ -36,6 +36,7 @@ export class ChatboxComponent implements OnInit{
   isLoading = false
   uid: string | null = null
   chatMessages: ChatMessage[] = []
+  @ViewChild('chatBody') private chatBody!: ElementRef;
   ngOnInit(): void {
     this.uid = localStorage.getItem("uid") ?? null
     this.loadUser(this.uid!, true) 
@@ -104,5 +105,19 @@ export class ChatboxComponent implements OnInit{
 
   onClickToggleMobileSidebar(){
     this.sidebarService.toggleMobileSidebar()
+  }
+
+  ngAfterViewInit() {
+    this.scrollToBottom();
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom(); // ensures scroll after each update
+  }
+
+  private scrollToBottom(): void {
+    try {
+      this.chatBody.nativeElement.scrollTop = this.chatBody.nativeElement.scrollHeight;
+    } catch (err) {}
   }
 }
