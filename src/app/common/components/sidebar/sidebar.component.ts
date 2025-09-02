@@ -74,7 +74,7 @@ export class SidebarComponent implements OnInit{
   }
 
   onTabChange(){
-    this.tabService.setTab(this.activeMenu?.label)
+    this.tabService.setTab(this.activeMenu?.label as "Chats" | "Friends" | "Groups" | "Calls" | undefined)
   }
 
   confirmLogout(event: Event) {
