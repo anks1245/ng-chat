@@ -69,4 +69,8 @@ export class MyChatsComponent implements OnInit {
     this.sidebarService.toggleMobileSidebar()
     this.tabService.setReceiver(id)
   }
+
+  navigateToFriendTab(){
+    this.tabService.setTab("Friends")
+  }
 }

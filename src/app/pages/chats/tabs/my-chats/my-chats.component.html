@@ -6,16 +6,22 @@
         </p-card>
     </ng-template>
 </p-dataView> -->
-<div *ngFor="let chat of recentChats;let i=index">
-    <div appRipple (click)="startChat(chat?.other_party?.userId ?? null)" class="px-2 py-3 flex align-items-center gap-2 select-none cursor-pointer border-round">
-        <p-avatar 
-            [label]="dp(chat?.other_party?.name ?? 'Un Known')"
-            size="normal" 
-            [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" />
-        <div class="flex-grow-1">
-            <h5 class="m-0">{{chat?.other_party?.name ?? 'Anonymous'}}</h5>
-            <span class="text-xs">{{chat.message}}</span>
+<ng-container>
+    <div *ngFor="let chat of recentChats;let i=index">
+        <div appRipple (click)="startChat(chat?.other_party?.userId ?? null)" class="px-2 py-3 flex align-items-center gap-2 select-none cursor-pointer border-round">
+            <p-avatar 
+                [label]="dp(chat?.other_party?.name ?? 'Un Known')"
+                size="normal" 
+                [style]="{ 'background-color': '#ece9fc', color: '#2a1261' }" />
+            <div class="flex-grow-1">
+                <h5 class="m-0">{{chat?.other_party?.name ?? 'Anonymous'}}</h5>
+                <span class="text-xs">{{chat.message}}</span>
+            </div>
         </div>
+        <div class="mx-1 surface-200" style="height: 1px;"></div>
     </div>
-    <div class="mx-1 surface-200" style="height: 1px;"></div>
-</div>
+</ng-container>
+<ng-template #noRecentChats>
+    <span>No Recent Chats. <span class="cursor-pointer text-primary" (click)="navigateToFriendTab()">Click to start</span></span>
+</ng-template>
+

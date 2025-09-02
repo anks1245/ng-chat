@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
         const registering = await this.authService.register(this.registerForm?.get("username")?.value, this.registerForm?.get("email")?.value, this.registerForm?.get("password")?.value)
         setTimeout(()=>{
           this.router.navigate(["login"])
-        },3000);
+        },2000);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: "User Created Successfully" });
       } catch (error) {
         this.messageService.add({ severity: 'error', summary: 'Failed', detail: "Something went wrong" });

@@ -37,7 +37,6 @@ export class AuthService {
           await deleteUser(user!)
           reject(error)
         }
-        
       })
   }
 

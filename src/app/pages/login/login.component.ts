@@ -23,10 +23,11 @@ export class LoginComponent implements OnInit{
   messageService = inject(MessageService)
   router = inject(Router)
   constructor(){
+    const uid = localStorage.getItem("uid")
     this.authService.user$
       .pipe(take(1))
       .subscribe(user => {
-        if (user) {
+        if (user && uid) {
           this.router.navigate(['/chats']);
         }
     });

@@ -17,7 +17,7 @@ export class TabService {
 
   constructor() { }
 
-  setTab(tab: string | null = null){
+  setTab(tab: 'Chats' | 'Friends' | 'Groups' | 'Calls' = 'Chats'){
     // this.clearAll()
     this.tabSubject.next(tab)
   }
