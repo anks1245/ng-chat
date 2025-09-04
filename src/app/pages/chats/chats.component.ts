@@ -28,7 +28,7 @@ export class ChatsComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.getAllUsers()
     this.subs = this.sidebarService.mobileSidebar$.subscribe(m=>{
-      console.log(m)
+      // console.log(m)
       this.isMobileSidebarOpen = m
     })
   }

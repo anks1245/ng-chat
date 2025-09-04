@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ChatsService } from '../../../../services/chats.service';
 import { AuthService } from '../../../../services/auth.service';
 import { firstValueFrom } from 'rxjs';
@@ -48,7 +48,7 @@ export class MyChatsComponent implements OnInit {
           })
         );
         this.recentChats = enrichedData.reverse()
-        console.log(this.recentChats);
+        // console.log(this.recentChats);
       });
     } catch (error) {
       console.error(error);
@@ -65,7 +65,7 @@ export class MyChatsComponent implements OnInit {
   }
 
   startChat(id: string | null){
-    console.log(id);
+    // console.log(id);
     this.sidebarService.toggleMobileSidebar()
     this.tabService.setReceiver(id)
   }

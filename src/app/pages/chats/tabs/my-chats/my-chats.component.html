@@ -6,7 +6,7 @@
         </p-card>
     </ng-template>
 </p-dataView> -->
-<ng-container>
+<ng-container *ngIf="recentChats.length > 0 else noRecentChats">
     <div *ngFor="let chat of recentChats;let i=index">
         <div appRipple (click)="startChat(chat?.other_party?.userId ?? null)" class="px-2 py-3 flex align-items-center gap-2 select-none cursor-pointer border-round">
             <p-avatar 
@@ -22,6 +22,8 @@
     </div>
 </ng-container>
 <ng-template #noRecentChats>
-    <span>No Recent Chats. <span class="cursor-pointer text-primary" (click)="navigateToFriendTab()">Click to start</span></span>
+    <div class="m-3">
+        <span>No Recent Chats. <span class="cursor-pointer text-primary" (click)="navigateToFriendTab()">Click to start</span></span>
+    </div>
 </ng-template>
 

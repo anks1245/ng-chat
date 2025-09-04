@@ -83,7 +83,7 @@ export class ChatboxComponent implements OnInit{
     }
     this.isLoading = true
     try {
-      console.log(this.uid!, this.receiver!, this.messageForm?.get("message")?.value);
+      // console.log(this.uid!, this.receiver!, this.messageForm?.get("message")?.value);
       this.chatService.sendMessage(this.uid!, this.receiver!, this.messageForm?.get("message")?.value)
       this.messageForm?.reset()
     } catch (error) {
@@ -99,7 +99,7 @@ export class ChatboxComponent implements OnInit{
   getMessageObserver(){
     this.chatService.getMessages(this.uid!, this.receiver!).subscribe(msgs=>{
       this.chatMessages = msgs
-      console.log(msgs);
+      // console.log(msgs);
     })
   }
 

@@ -55,6 +55,11 @@ export class SidebarComponent implements OnInit{
     //   console.log(m);
     // })
 
+    this.tabService.tab$.subscribe(t=>{
+      const m = this.items?.find(i=>i.label == t)
+      this.activeMenu = m
+    })
+
     this.getCurrentUser()
   }
 

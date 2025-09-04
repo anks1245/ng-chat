@@ -41,7 +41,7 @@ export class ChatsService {
     const lastChatRef = ref(this.rtd, "lastChats")
     const lastChatQuery = query(lastChatRef, orderByChild("timestamp"))
     const lastChats = listVal<ChatMessage>(lastChatQuery)
-    console.log(lastChats)
+    // console.log(lastChats)
     return lastChats
   }
 
