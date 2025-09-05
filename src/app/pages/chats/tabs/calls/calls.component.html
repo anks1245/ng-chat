@@ -1,1 +1,76 @@
-<p>calls works!</p>
+<div class="mx-2 flex flex-wrap justify-content-between align-items-center">
+    <h2>Recent Calls</h2>
+    <p-button label="Setup a Call" size="small" (onClick)="showDialog()"/>
+</div>
+<ng-container *ngIf="calls.length > 0 else noRecentCalls">
+    <div *ngFor="let call of calls;let i=index">
+        <div appRipple class="px-2 py-3 flex flex-column gap-2 select-none cursor-pointer border-round">
+            <h3 class="m-0">{{call?.room_name ?? 'Anonymous'}}</h3>
+            <div class="flex flex-wrap">
+                <div class="text-xs">
+                    <b>Participants</b>: 
+                    <span *ngFor="let participant of call.participants;let i=index">
+                        {{participant.name}}
+                        <span *ngIf="i < call.participants.length">,</span>
+                    </span>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="mx-1 surface-200" style="height: 1px;"></div>
+    </div>
+</ng-container>
+<ng-template #noRecentCalls>
+    <div class="m-3">
+        <span>No Recent Calls.</span>
+    </div>
+</ng-template>
+<p-dialog header="Start a New Meeting" [modal]="true" [(visible)]="visible" class="w-8">
+    <p class="p-text-secondary block mb-5">Create a new call room and share the link with others to join.<br/>You can customize the room name and choose whether it’s private or public.</p>
+    <form [formGroup]="formGroup" (ngSubmit)="createRoom()">
+        <div class="flex align-items-center gap-3 mb-3">
+            <label for="username" class="font-semibold w-6rem">Room Name</label>
+            <div class="flex-auto">
+                <input pInputText id="username" formControlName="room_name" class="w-full" autocomplete="off" />
+                <small 
+                    class="p-error text-red-500" 
+                    *ngIf="formGroup.get('room_name')?.touched 
+                            && formGroup.get('room_name')?.hasError('required')">
+                    Room name is required.
+                </small>
+            </div>
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="participants" class="font-semibold w-6rem">Participants</label>
+            <div class="flex-auto">
+                <p-multiSelect 
+                    id="participants"
+                    styleClass="w-full"
+                    [options]="users" 
+                    formControlName="participants" 
+                    optionLabel="name" 
+                    appendTo="body"
+                    placeholder="Select Users"/>
+                <small 
+                    class="p-error text-red-500" 
+                    *ngIf="formGroup.get('participants')?.touched && formGroup.get('participants')?.hasError('required')">
+                        Participants required.
+                </small>
+            </div>
+            
+        </div>
+        <div class="flex align-items-center gap-3 mb-5">
+            <label for="description" class="font-semibold w-6rem">Description <span class="text-muted">(Optional)</span></label>
+            <div class="flex-auto">
+                <textarea pInputText id="description" formControlName="description" class="w-full" autocomplete="off" ></textarea>
+            </div>
+            
+        </div>
+        <div class="flex justify-content-end gap-2">
+            <button pButton label="Cancel" severity="secondary" (onClick)="formGroup.reset(); visible= false" ></button>
+            <button pButton type="submit" [loading]="loading" [disabled]="loading">Create Room</button>
+        </div>
+    </form>
+</p-dialog>
+<p-toast/>

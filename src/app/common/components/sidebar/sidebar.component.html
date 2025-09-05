@@ -32,7 +32,7 @@
             </a>
         </ng-template>
     </p-tabMenu>
-    <div class="w-full flex-grow-1 overflow-y-scroll" >
+    <div class="w-full flex-grow-1 overflow-y-auto overflow-x-hidden" >
         <div [ngSwitch]="activeMenu?.label">
             <ng-container *ngSwitchCase="'Chats'">
                 <app-my-chats/>

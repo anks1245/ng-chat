@@ -20,3 +20,11 @@ body{
     font-size: 12px;
     padding: 0.50rem 0.50rem;
 }
+
+.p-multiselect{
+    padding: 0.30rem 0.30rem;
+}
+
+.p-multiselect .p-multiselect-label{
+    padding: 0.25rem 0.25rem;
+}

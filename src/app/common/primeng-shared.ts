@@ -33,6 +33,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { SkeletonModule } from 'primeng/skeleton';
 import { DataViewModule } from 'primeng/dataview';
 import { RippleModule } from 'primeng/ripple';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 export const PRIMENG_MODULES = [
   ButtonModule,
@@ -68,5 +69,6 @@ export const PRIMENG_MODULES = [
   AvatarGroupModule,
   SkeletonModule,
   DataViewModule,
-  RippleModule
+  RippleModule,
+  MultiSelectModule
 ];

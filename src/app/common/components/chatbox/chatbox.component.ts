@@ -11,11 +11,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChatsService } from '../../../services/chats.service';
 import { ChatMessage } from '../../models/chat';
 import { SidebarService } from '../../../services/sidebar.service';
+import { JitsiComponent } from "../jitsi/jitsi.component";
 
 @Component({
   selector: 'app-chatbox',
   standalone: true,
-  imports: [PRIMENG_MODULES, COMMON],
+  imports: [PRIMENG_MODULES, COMMON, JitsiComponent],
   templateUrl: './chatbox.component.html',
   styleUrl: './chatbox.component.scss',
   providers: [MessageService]
@@ -98,8 +99,7 @@ export class ChatboxComponent implements OnInit{
   //Observing messages
   getMessageObserver(){
     this.chatService.getMessages(this.uid!, this.receiver!).subscribe(msgs=>{
-      this.chatMessages = msgs
-      // console.log(msgs);
+      console.log(msgs);
     })
   }
 
